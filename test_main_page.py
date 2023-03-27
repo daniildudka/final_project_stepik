@@ -9,24 +9,24 @@ class TestLoginFromMainPage():
     def test_guest_can_go_to_login_page(self, browser):
         link = "http://selenium1py.pythonanywhere.com/"
         page = MainPage(browser,
-                        link)  # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
-        page.open()  # открываем страницу
-        page.go_to_login_page()  # выполняем метод страницы — переходим на страницу логина
+                        link)  # Инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
+        page.open()  # Открываем страницу
+        page.go_to_login_page()  # Выполняем метод страницы — переходим на страницу логина
         login_page = LoginPage(browser, browser.current_url)
         login_page.should_be_login_page()
 
     def test_guest_should_see_login_link(self, browser):
         link = "http://selenium1py.pythonanywhere.com/"
         page = MainPage(browser, link)
-        page.open()
+        page.open()  # Открываем страницу
         page.should_be_login_link()
 
 
 def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     link = "http://selenium1py.pythonanywhere.com/"
-    page = MainPage(browser, link)  # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
-    page.open()  # открываем страницу
-    page.go_to_basket_page()  # переходим в корзину
+    page = MainPage(browser, link)  # Инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
+    page.open()  # Открываем страницу
+    page.go_to_basket_page()  # Переходим в корзину
     basket_page = BasketPage(browser, browser.current_url)
-    basket_page.should_be_empty_basket()  # проверяем, что корзина пустая
+    basket_page.should_be_empty_basket()  # Проверяем, что корзина пустая
     basket_page.empty_text_was_shown()  # проверяем, что текст с пустой корзиной на месте
